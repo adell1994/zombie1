@@ -6,5 +6,4 @@ using UnityEngine;
 public class StageListScriptableObjects : ScriptableObject
 {
     public List<StageScriptableObjects> StageList;
-
 }

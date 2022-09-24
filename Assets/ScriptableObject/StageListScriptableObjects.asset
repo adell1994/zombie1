@@ -12,4 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: StageListScriptableObjects
   m_EditorClassIdentifier: Assembly-CSharp::StageListScriptableObjects
-  StageList: []
+  StageList:
+  - id: 1
+    name: Stage1
+    unlock_condition_type: 0
+    unlock_condition_value: 0
+    thumbnail: 
+    stage_scene: Stage1
+  - id: 2
+    name: Stage2
+    unlock_condition_type: 1
+    unlock_condition_value: 10
+    thumbnail: 
+    stage_scene: 
+  - id: 3
+    name: Stage3
+    unlock_condition_type: 1
+    unlock_condition_value: 10
+    thumbnail: 
+    stage_scene: 
