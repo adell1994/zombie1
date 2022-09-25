@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StageListScriptableObjects
   StageList:
   - id: 1
-    name: Stage1
+    name: Port
     unlock_condition_type: 0
     unlock_condition_value: 0
     thumbnail: 
