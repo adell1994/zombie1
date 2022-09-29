@@ -17,13 +17,13 @@ MonoBehaviour:
     name: Port
     unlock_condition_type: 0
     unlock_condition_value: 0
-    thumbnail: 
-    stage_scene: Stage1
+    thumbnail: Resources\Select\SelectStageBottun.png
+    stage_scene: Scene/Port
   - id: 2
     name: Stage2
     unlock_condition_type: 1
     unlock_condition_value: 10
-    thumbnail: 
+    thumbnail: Resources\Select/SelectStageBottun2.png
     stage_scene: 
   - id: 3
     name: Stage3
