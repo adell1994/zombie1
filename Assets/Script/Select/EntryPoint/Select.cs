@@ -10,7 +10,7 @@ public class Select : MonoBehaviour
     public GameObject stagePrefab;
     public RectTransform listTransform;
     public const int CONTENT_WIDTH = 300;
-    public const int CONTENT_SPACE = 30;
+    public const int CONTENT_SPACE = 200;
 
     // Start is called before the first frame update
     void Start()
