@@ -20,7 +20,7 @@ MonoBehaviour:
     thumbnail: Select/SelectStageBottun
     stage_scene: Scene/Port
   - id: 2
-    name: Stage2
+    name: Village
     unlock_condition_type: 1
     unlock_condition_value: 10
     thumbnail: Select/SelectStageBottun2
