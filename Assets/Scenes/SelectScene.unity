@@ -921,8 +921,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stageList: {fileID: 11400000, guid: 31e6af1056c6c284092182e89305f517, type: 2}
-  stagePrefab: {fileID: 352592614756043474, guid: 178bf8b60d2559f48898954d6523c28d, type: 3}
+  stagePrefab: {fileID: 8511953748587234059, guid: 178bf8b60d2559f48898954d6523c28d, type: 3}
   listTransform: {fileID: 1012852127}
+  selectSE: {fileID: 8300000, guid: f1f8d41bfc2239d409c97c1fa5fd6a36, type: 3}
+  isButtonPush: 0
 --- !u!4 &1154271912
 Transform:
   m_ObjectHideFlags: 0
