@@ -20,8 +20,8 @@ public class ZombieParameter : MonoBehaviour
             Animator anim = GetComponent<Animator>();
             anim.SetBool("Dead", true);
             isDead = true;
+            Invoke("Erase", 3.0f);
 
-            Destroy(gameObject);
         }
 
     }
@@ -29,5 +29,9 @@ public class ZombieParameter : MonoBehaviour
     public void Damage(int damage)
     {
         hitPoint -= damage;
+    }
+    public void Erase()
+    {
+        Destroy(gameObject);
     }
 }

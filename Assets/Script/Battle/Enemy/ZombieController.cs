@@ -32,7 +32,7 @@ public class ZombieController : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("BulletSpawn"))
+        if (other.CompareTag("Shell"))
         {
 
             hp.Damage(damage);
