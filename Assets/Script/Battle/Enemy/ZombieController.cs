@@ -8,15 +8,11 @@ public class ZombieController : MonoBehaviour
     public GameObject TargetObject; /// 目標位置
     NavMeshAgent m_navMeshAgent; /// NavMeshAgent
     public Animator animator;
-    public int damage;        
-    private GameObject enemy;  
-    private ZombieParameter hp;
+
     // Use this for initialization
     void Start()
     {
         m_navMeshAgent = GetComponent<NavMeshAgent>();
-        enemy = GameObject.Find("Zombie1");
-        hp = enemy.GetComponent<ZombieParameter>();
     }
     // Update is called once per frame
     void Update()
@@ -28,16 +24,6 @@ public class ZombieController : MonoBehaviour
 
             // NavMeshAgentに目的地をセット
             m_navMeshAgent.SetDestination(TargetObject.transform.position);
-        }
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Shell"))
-        {
-
-            hp.Damage(damage);
-
-            Destroy(other.gameObject);
         }
     }
 }
