@@ -28,7 +28,7 @@ public class CreateSkinedMeshCollider : MonoBehaviour
             nextTime = interval;
 
             Mesh bakedMesh = new Mesh();
-            skinnedMeshRenderer.BakeMesh(bakedMesh);
+            skinnedMeshRenderer.BakeMesh(bakedMesh,true);
             meshCollider.sharedMesh = null;
             meshCollider.sharedMesh = bakedMesh;
         }
