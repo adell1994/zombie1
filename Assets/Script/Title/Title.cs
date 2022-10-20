@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class Title : MonoBehaviour
 {
     public AudioClip startSE;
-    private AudioSource audioSource;
+    public AudioSource audioSource;
     public GameObject text;
 
     public bool isButtonPush = false;
