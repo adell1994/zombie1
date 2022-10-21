@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class ZombieParameter : MonoBehaviour
 {
@@ -10,12 +11,14 @@ public class ZombieParameter : MonoBehaviour
     public AudioClip headShotSE;
     public AudioClip zombieSE;
     public AudioSource audioSource;
+    NavMeshAgent m_navMeshAgent;
 
     // Update is called once per frame
     private void Start()
     {
         audioSource = gameObject.GetComponent<AudioSource>();
         audioSource.PlayOneShot(zombieSE);
+        m_navMeshAgent = GetComponent<NavMeshAgent>();
     }
     void Update()
     {
@@ -27,6 +30,7 @@ public class ZombieParameter : MonoBehaviour
                 return;
             }
             Animator anim = GetComponent<Animator>();
+            m_navMeshAgent.speed = 0f;
             anim.SetBool("Dead", true);
             isDead = true;
             Invoke("Erase", 3.0f);
@@ -51,6 +55,7 @@ public class ZombieParameter : MonoBehaviour
         }
         head.SetActive(false);
         audioSource.PlayOneShot(headShotSE);
+        m_navMeshAgent.speed = 0f;
         Animator anim = GetComponent<Animator>();
         anim.SetBool("Dead", true);
         isDead = true;
