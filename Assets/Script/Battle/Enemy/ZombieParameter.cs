@@ -34,7 +34,6 @@ public class ZombieParameter : MonoBehaviour
             anim.SetBool("Dead", true);
             isDead = true;
             Invoke("Erase", 3.0f);
-
         }
 
     }

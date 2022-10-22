@@ -637,8 +637,10 @@ MonoBehaviour:
   wait: 0
   enemyCanShoot: 0
   isChasing: 0
-  shootDistance: 3
-  player: {fileID: 0}
+  shootDistance: 1
+  player: {fileID: 836274936}
+  damage: 25
+  EnemyWepon: {fileID: 1548805161}
 --- !u!82 &38030682
 AudioSource:
   m_ObjectHideFlags: 0
@@ -10848,6 +10850,20 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 173116, guid: c391f12a928274acab8576bb6030641d, type: 3}
   m_PrefabInstance: {fileID: 97590097}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &836274945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 836274936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7631e370ffd4e97408a6d9d5b83b6d6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHitPoint: 100
+  isDead: 0
 --- !u!1001 &839262666
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21199,7 +21215,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7919196358131396253, guid: 6dc4cf4496348884d8ee27743ae38562, type: 3}
       propertyPath: m_TagString
-      value: Enemy
+      value: EnemyWepon
       objectReference: {fileID: 0}
     - target: {fileID: 8103067124237306251, guid: 6dc4cf4496348884d8ee27743ae38562, type: 3}
       propertyPath: m_TagString
