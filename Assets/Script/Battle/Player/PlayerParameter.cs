@@ -7,9 +7,12 @@ public class PlayerParameter : MonoBehaviour
     public int playerHitPoint;
     public bool isDead;
     public GameObject gameOverText;
-    public float timeInvincible = 2.0f;
+    public float timeInvincible = 1.5f;
+    public float timeHpRecovery = 15.0f;
     bool isInvincible;
+    bool isHpRecovery;
     float invincibleTimer;
+    float hpRecoveryTimer;
     public AudioClip takeDamageSE;
     private AudioSource audioSource;
     // Start is called before the first frame update
@@ -28,7 +31,7 @@ public class PlayerParameter : MonoBehaviour
                 return;
             }
             isDead = true;
-            Battle.state = Battle.BattleState.Battle; 
+            Battle.state = Battle.BattleState.End; 
             gameOverText.SetActive(true);
         }
         if (isInvincible == true)
@@ -37,6 +40,15 @@ public class PlayerParameter : MonoBehaviour
             if (invincibleTimer < 0)
             {
                 isInvincible = false;
+            }
+        }
+        if (isHpRecovery == true)
+        {
+            hpRecoveryTimer -= Time.deltaTime;
+            if (hpRecoveryTimer < 0)
+            {
+                playerHitPoint += (100 - playerHitPoint);
+                isHpRecovery = false;
             }
         }
 
@@ -50,6 +62,8 @@ public class PlayerParameter : MonoBehaviour
         audioSource.PlayOneShot(takeDamageSE);
         playerHitPoint -= damage;
         isInvincible = true;
+        isHpRecovery = true;
         invincibleTimer = timeInvincible;
+        hpRecoveryTimer = timeHpRecovery;
     }
 }

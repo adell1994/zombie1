@@ -10,7 +10,7 @@ public class Battle : MonoBehaviour
         Battle,
         End
     }
-    public static  BattleState state = BattleState.Redy;
+    public static  BattleState state = BattleState.Battle;
     // Start is called before the first frame update
     void Start()
     {
