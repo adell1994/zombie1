@@ -13,6 +13,10 @@ public class ZombieController : MonoBehaviour
     void Start()
     {
         m_navMeshAgent = GetComponent<NavMeshAgent>();
+        if(TargetObject == null)
+        {
+            TargetObject = GameObject.FindGameObjectWithTag("Player");
+        }
     }
     // Update is called once per frame
     void Update()

@@ -2,16 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Battle : MonoBehaviour
+public class Round : MonoBehaviour
 {
-
-    public enum BattleState
-    {
-        Redy,
-        Battle,
-        End
-    }
-    public static  BattleState state = BattleState.Battle;
+    public int round = 1;
+    public int logic_round = 1;
+    public EnemyGenerator enemyGenerator;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,5 +17,10 @@ public class Battle : MonoBehaviour
     void Update()
     {
         
+    }
+    void ForwardRound()
+    {
+        round++;
+        logic_round++;
     }
 }

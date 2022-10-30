@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyPopPoint : MonoBehaviour
+public class EnemyGenerator : MonoBehaviour
 {
     //　出現させる敵を入れておく
     [SerializeField] GameObject[] enemys;
+    [SerializeField] GameObject[] popPoints;
     //　次に敵が出現するまでの時間
     [SerializeField] float appearNextTime;
     //　この場所から出現する敵の数
@@ -44,10 +45,11 @@ public class EnemyPopPoint : MonoBehaviour
     {
         //　出現させる敵をランダムに選ぶ
         var randomValue = Random.Range(0, enemys.Length);
+        var randomPoint = Random.Range(0, popPoints.Length);
         //　敵の向きをランダムに決定
         var randomRotationY = Random.value * 360f;
 
-        GameObject.Instantiate(enemys[randomValue], transform.position, Quaternion.Euler(0f, randomRotationY, 0f));
+        GameObject.Instantiate(enemys[randomValue],popPoints[randomPoint].transform.position, Quaternion.Euler(0f, randomRotationY, 0f));
 
         numberOfEnemys++;
         elapsedTime = 0f;
