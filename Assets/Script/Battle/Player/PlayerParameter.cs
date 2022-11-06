@@ -14,6 +14,7 @@ public class PlayerParameter : MonoBehaviour
     float invincibleTimer;
     float hpRecoveryTimer;
     public AudioClip takeDamageSE;
+    public AudioClip damageSE;
     private AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
@@ -59,7 +60,8 @@ public class PlayerParameter : MonoBehaviour
         {
             return;
         }
-        audioSource.PlayOneShot(takeDamageSE);
+        audioSource.PlayOneShot(takeDamageSE,0.5f);
+        audioSource.PlayOneShot(damageSE,1.0f);
         playerHitPoint -= damage;
         isInvincible = true;
         isHpRecovery = true;

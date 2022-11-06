@@ -5,11 +5,9 @@ using UnityEngine.AI;
 
 public class FormidableEnemyParametor : MonoBehaviour
 {
-    public int hitPoint = 100;
+    public int hitPoint = 50;
     public bool isDead = false;
-    public GameObject head;
-    public AudioClip headShotSE;
-    public AudioClip zombieSE;
+    public AudioClip formidableSE;
     public AudioSource audioSource;
     NavMeshAgent m_navMeshAgent;
 
@@ -17,7 +15,7 @@ public class FormidableEnemyParametor : MonoBehaviour
     private void Start()
     {
         audioSource = gameObject.GetComponent<AudioSource>();
-        audioSource.PlayOneShot(zombieSE);
+        audioSource.PlayOneShot(formidableSE);
         m_navMeshAgent = GetComponent<NavMeshAgent>();
     }
     void Update()
@@ -45,9 +43,5 @@ public class FormidableEnemyParametor : MonoBehaviour
     public void Erase()
     {
         Destroy(gameObject);
-    }
-    public void HeadShot()
-    {
-        Damage(50);
     }
 }
