@@ -11,6 +11,7 @@ public class PlayerParameter : MonoBehaviour
     public float timeHpRecovery = 15.0f;
     bool isInvincible;
     bool isHpRecovery;
+    bool isDamageSE;
     float invincibleTimer;
     float hpRecoveryTimer;
     public AudioClip takeDamageSE;
@@ -50,6 +51,7 @@ public class PlayerParameter : MonoBehaviour
             {
                 playerHitPoint += (100 - playerHitPoint);
                 isHpRecovery = false;
+                isDamageSE = false;
             }
         }
 
@@ -61,11 +63,20 @@ public class PlayerParameter : MonoBehaviour
             return;
         }
         audioSource.PlayOneShot(takeDamageSE,0.5f);
-        audioSource.PlayOneShot(damageSE,1.0f);
+        DamageSE();
         playerHitPoint -= damage;
         isInvincible = true;
         isHpRecovery = true;
+        isDamageSE = true;
         invincibleTimer = timeInvincible;
         hpRecoveryTimer = timeHpRecovery;
+    }
+    public void DamageSE()
+    {
+        if(isDamageSE == true)
+        {
+            return;
+        }
+        audioSource.PlayOneShot(damageSE, 1.0f);
     }
 }
