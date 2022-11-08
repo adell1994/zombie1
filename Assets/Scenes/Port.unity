@@ -10924,6 +10924,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thrust: 15
   grenade: {fileID: 1719202955493098162, guid: 16d4c1a045db3f64595e582e7aefb01f, type: 3}
+  throwGrenade: 2
 --- !u!1001 &839262666
 PrefabInstance:
   m_ObjectHideFlags: 0

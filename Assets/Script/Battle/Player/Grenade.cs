@@ -4,30 +4,36 @@ using UnityEngine;
 
 public class Grenade : MonoBehaviour
 {
+    public AudioClip grenadeSE;
+    AudioSource audioSource;
+
     // Start is called before the first frame update
     void Start()
     {
+        Battle.grenadeState = Battle.GrenadeState.Throw;
+        audioSource = gameObject.GetComponent<AudioSource>();
+        audioSource.PlayOneShot(grenadeSE);
         Invoke("Explode", 10.0f); // グレネードが作られてから10秒後に爆発させる
+        StartCoroutine("DeleteGrenade");
     }
-
-    // Update is called once per frame
-    void Update()
+    IEnumerator DeleteGrenade()
     {
-
+        yield return new WaitForSeconds(15.0f);
+        Destroy(gameObject);		// 自分自身を消滅させる。
     }
+
+
 
     void Explode()
     {
-        GameObject[] cubes = GameObject.FindGameObjectsWithTag("Cube"); //「Cube」タグのついたオブジェクトを全て検索して配列にいれる
-
-        if (cubes.Length == 0) return; // 「Cube」タグがついたオブジェクトがなければ何もしない。
-
-        foreach (GameObject cube in cubes) // 配列に入れた一つひとつのオブジェクト
-        {
-            if (cube.GetComponent<Rigidbody>()) // Rigidbodyがあれば、グレネードを中心とした爆発の力を加える
-            {
-                cube.GetComponent<Rigidbody>().AddExplosionForce(100f, transform.position, 30f, 5f, ForceMode.Impulse);
+        Collider[] targets = Physics.OverlapSphere(transform.position, 0.7f);   // 自分自身を中心に、半径0.7以内にいるColliderを探し、配列に格納.
+        foreach (Collider obj in targets)
+        {       // targets配列を順番に処理 (その時に仮名をobjとする)
+            if (obj.tag == "Enemy")
+            {               // タグ名がEnemyなら
+                Destroy(obj.gameObject);        // そのゲームオブジェクトを消滅させる。
             }
         }
+        Battle.grenadeState = Battle.GrenadeState.Redy;
     }
 }

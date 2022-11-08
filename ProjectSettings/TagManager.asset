@@ -12,6 +12,7 @@ TagManager:
   - Enemy
   - Weapon
   - EnemyWepon
+  - Grenade
   layers:
   - Default
   - TransparentFX

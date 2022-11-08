@@ -12,6 +12,13 @@ public class Battle : MonoBehaviour
         End
     }
     public static  BattleState state = BattleState.Battle;
+    public enum GrenadeState
+    {
+        Redy,
+        Throw,
+        End
+    }
+    public static  GrenadeState grenadeState = GrenadeState.Redy;
     // Start is called before the first frame update
     void Start()
     {

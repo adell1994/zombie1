@@ -29,5 +29,13 @@ public class ZombieController : MonoBehaviour
             // NavMeshAgentに目的地をセット
             m_navMeshAgent.SetDestination(TargetObject.transform.position);
         }
+        if (Battle.grenadeState == Battle.GrenadeState.Throw)
+        {
+            TargetObject = GameObject.FindGameObjectWithTag("Grenade");
+        }
+        else
+        {
+            TargetObject = GameObject.FindGameObjectWithTag("Player");
+        }
     }
 }
