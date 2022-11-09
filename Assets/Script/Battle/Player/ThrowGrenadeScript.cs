@@ -9,7 +9,7 @@ public class ThrowGrenadeScript : MonoBehaviour
     public GameObject grenade;
     Rigidbody rb_grenade;
     public int throwGrenade = 2;
-
+    bool isThrow;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +25,10 @@ public class ThrowGrenadeScript : MonoBehaviour
             {
                 return;
             }
+            if(isThrow == true)
+            {
+                return;
+            }
             Vector3 pos = transform.position + transform.TransformDirection(Vector3.forward);       // プレイヤー位置　+　プレイヤー正面にむけて１進んだ距離
             GameObject bom = Instantiate(grenade, pos, Quaternion.identity) as GameObject;       // 手榴弾を作成
 
@@ -33,7 +37,15 @@ public class ThrowGrenadeScript : MonoBehaviour
             bom.GetComponent<Rigidbody>().velocity = bom_speed;     // 手榴弾の速度を代入
 
             bom.GetComponent<Rigidbody>().angularVelocity = Vector3.forward * 7;	// 手榴弾を回転速度を代入.
+            isThrow = true;
             throwGrenade--;
+            StartCoroutine("ThrowInterval");
         }
+
+    }
+    IEnumerator ThrowInterval()
+    {
+        yield return new WaitForSeconds(1.0f);
+        isThrow = false;
     }
 }

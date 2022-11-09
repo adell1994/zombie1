@@ -6,6 +6,7 @@ public class Grenade : MonoBehaviour
 {
     public AudioClip grenadeSE;
     AudioSource audioSource;
+    ZombieParameter enemyHp;
 
     // Start is called before the first frame update
     void Start()
@@ -18,7 +19,7 @@ public class Grenade : MonoBehaviour
     }
     IEnumerator DeleteGrenade()
     {
-        yield return new WaitForSeconds(15.0f);
+        yield return new WaitForSeconds(13.0f);
         Destroy(gameObject);		// 自分自身を消滅させる。
     }
 
@@ -26,12 +27,13 @@ public class Grenade : MonoBehaviour
 
     void Explode()
     {
-        Collider[] targets = Physics.OverlapSphere(transform.position, 0.7f);   // 自分自身を中心に、半径0.7以内にいるColliderを探し、配列に格納.
+        Collider[] targets = Physics.OverlapSphere(transform.position, 1.0f);   // 自分自身を中心に、半径1.0以内にいるColliderを探し、配列に格納.
         foreach (Collider obj in targets)
         {       // targets配列を順番に処理 (その時に仮名をobjとする)
             if (obj.tag == "Enemy")
             {               // タグ名がEnemyなら
-                Destroy(obj.gameObject);        // そのゲームオブジェクトを消滅させる。
+                ZombieParameter enemy = obj.GetComponent<EnemyPart>().parameter;
+                enemy.GrenadeDeath();
             }
         }
         Battle.grenadeState = Battle.GrenadeState.Redy;

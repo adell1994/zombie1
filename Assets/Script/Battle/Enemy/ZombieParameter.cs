@@ -60,4 +60,16 @@ public class ZombieParameter : MonoBehaviour
         isDead = true;
         Invoke("Erase", 3.0f);
     }
+    public void GrenadeDeath()
+    {
+        if (isDead == true)
+        {
+            return;
+        }
+        m_navMeshAgent.speed = 0f;
+        Animator anim = GetComponent<Animator>();
+        anim.SetBool("Dead", true);
+        isDead = true;
+        Invoke("Erase", 3.0f);
+    }
 }
