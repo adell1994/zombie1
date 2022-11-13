@@ -19,6 +19,9 @@ public class Battle : MonoBehaviour
         End
     }
     public static  GrenadeState grenadeState = GrenadeState.Redy;
+    int remainingEnemyNum;
+    public EnemyGenerator enemyGenerator;
+    public Round round;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,5 +32,28 @@ public class Battle : MonoBehaviour
     void Update()
     {
         
+    }
+    void EnemyDead()
+    {
+        remainingEnemyNum -= 1;
+        if (remainingEnemyNum <= 0 && Enemy.bossType != Enemy.BossType.None)
+        {
+            enemyGenerator.SetUp(Enemy.bossType);
+        }
+        else if (remainingEnemyNum <= 0)
+        {
+            RoundClear();
+        }
+    }
+    void RoundClear()
+    {
+        RoundSetup();
+    }
+    void RoundSetup()
+    {
+        round.ForwardRound();
+        round.Setup();
+        enemyGenerator.SetUp();
+        remainingEnemyNum = round.enemyNum;
     }
 }

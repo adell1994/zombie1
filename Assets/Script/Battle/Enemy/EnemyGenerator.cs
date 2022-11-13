@@ -15,6 +15,9 @@ public class EnemyGenerator : MonoBehaviour
     private int numberOfEnemys;
     //　待ち時間計測フィールド
     private float elapsedTime;
+    public GameObject zombie;
+    public GameObject dog;
+    public  Round round;
 
     // Start is called before the first frame update
     void Start()
@@ -49,10 +52,19 @@ public class EnemyGenerator : MonoBehaviour
         //　敵の向きをランダムに決定
         var randomRotationY = Random.value * 360f;
 
-        GameObject.Instantiate(enemys[randomValue],popPoints[randomPoint].transform.position, Quaternion.Euler(0f, randomRotationY, 0f));
+        GameObject.Instantiate(enemys[randomValue], popPoints[randomPoint].transform.position, Quaternion.Euler(0f, randomRotationY, 0f));
 
         numberOfEnemys++;
         elapsedTime = 0f;
+    }
+    public void SetUp()
+    {
+        enemys.clear();
+        enemys.Add(zombie); // ゾンビ				
+        if(round.roundNum > 15)
+        {
+            enemys.Add(dog);
+        }
     }
 }
 
