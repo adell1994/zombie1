@@ -8,11 +8,13 @@ public class Round : MonoBehaviour
     public int enemyNum;
     public float roundBlock;
     public EnemyGenerator enemyGenerator;
-    
+    private AudioSource audioSource;
+    public AudioClip roundProgresses;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        audioSource = gameObject.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -34,12 +36,17 @@ public class Round : MonoBehaviour
            //ƒ{ƒXoŒ»				
           Enemy.bossType = Enemy.BossType.Boss2nd;
         }
-        enemyNum = roundNum + 5;
+        if(enemyNum >= 200)
+        {
+            return;
+        }
+        enemyNum = roundNum * 10;
     }
         
 
      public void ForwardRound()
      {
+        audioSource.PlayOneShot(roundProgresses, 1.0f);
         roundNum++;
      }
 }

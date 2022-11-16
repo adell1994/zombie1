@@ -12,7 +12,7 @@ public class ZombieParameter : MonoBehaviour
     public AudioClip zombieSE;
     public AudioSource audioSource;
     NavMeshAgent m_navMeshAgent;
-
+    Battle battle;
     // Update is called once per frame
     private void Start()
     {
@@ -33,6 +33,7 @@ public class ZombieParameter : MonoBehaviour
             m_navMeshAgent.speed = 0f;
             anim.SetBool("Dead", true);
             isDead = true;
+            battle.EnemyDead();
             Invoke("Erase", 3.0f);
         }
 
@@ -58,6 +59,7 @@ public class ZombieParameter : MonoBehaviour
         Animator anim = GetComponent<Animator>();
         anim.SetBool("Dead", true);
         isDead = true;
+        battle.EnemyDead();
         Invoke("Erase", 3.0f);
     }
     public void GrenadeDeath()
@@ -70,6 +72,7 @@ public class ZombieParameter : MonoBehaviour
         Animator anim = GetComponent<Animator>();
         anim.SetBool("Dead", true);
         isDead = true;
+        battle.EnemyDead();
         Invoke("Erase", 3.0f);
     }
 }

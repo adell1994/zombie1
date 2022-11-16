@@ -19,7 +19,7 @@ public class Battle : MonoBehaviour
         End
     }
     public static  GrenadeState grenadeState = GrenadeState.Redy;
-    int remainingEnemyNum;
+    public int remainingEnemyNum;
     public EnemyGenerator enemyGenerator;
     public Round round;
     // Start is called before the first frame update
@@ -33,12 +33,12 @@ public class Battle : MonoBehaviour
     {
         
     }
-    void EnemyDead()
+    public void EnemyDead()
     {
         remainingEnemyNum -= 1;
         if (remainingEnemyNum <= 0 && Enemy.bossType != Enemy.BossType.None)
         {
-            enemyGenerator.SetUp(Enemy.bossType);
+            enemyGenerator.BossSetUp();
         }
         else if (remainingEnemyNum <= 0)
         {
