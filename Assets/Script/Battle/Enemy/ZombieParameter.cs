@@ -19,6 +19,7 @@ public class ZombieParameter : MonoBehaviour
         audioSource = gameObject.GetComponent<AudioSource>();
         audioSource.PlayOneShot(zombieSE);
         m_navMeshAgent = GetComponent<NavMeshAgent>();
+        battle = GameObject.Find("Battle").GetComponent<Battle>();
     }
     void Update()
     {

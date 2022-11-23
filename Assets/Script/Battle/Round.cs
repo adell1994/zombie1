@@ -8,13 +8,13 @@ public class Round : MonoBehaviour
     public int enemyNum;
     public float roundBlock;
     public EnemyGenerator enemyGenerator;
-    private AudioSource audioSource;
+    public AudioSource audioSource;
     public AudioClip roundProgresses;
 
     // Start is called before the first frame update
     void Start()
     {
-        audioSource = gameObject.GetComponent<AudioSource>();
+       // audioSource = gameObject.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame

@@ -28,7 +28,7 @@ public class EnemyGenerator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (numberOfEnemys >= battle.remainingEnemyNum) 
+        if (numberOfEnemys >= round.enemyNum) 
         {
             return;
         }
@@ -46,7 +46,7 @@ public class EnemyGenerator : MonoBehaviour
     void AppearEnemy()
     {
         //　出現させる敵をランダムに選ぶ
-        var randomValue = Random.Range(0, enemys_list.Length);
+        var randomValue = Random.Range(0, enemys_list.Count);
         var randomPoint = Random.Range(0, popPoints.Length);
         //　敵の向きをランダムに決定
         var randomRotationY = Random.value * 360f;
@@ -58,6 +58,8 @@ public class EnemyGenerator : MonoBehaviour
     }
     public void SetUp()
     {
+        numberOfEnemys = 0;
+        elapsedTime = 5.0f;
         enemys_list.Clear();
         enemys_list.Add(zombie); // ゾンビ				
         if (round.roundNum > 15)

@@ -25,7 +25,7 @@ public class Battle : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Invoke("RoundSetup", 2.0f);
     }
 
     // Update is called once per frame
@@ -35,7 +35,9 @@ public class Battle : MonoBehaviour
     }
     public void EnemyDead()
     {
+       // Debug.Log("EnemyDead");
         remainingEnemyNum -= 1;
+       // Debug.Log("remainingEnemyNum" + remainingEnemyNum);
         if (remainingEnemyNum <= 0 && Enemy.bossType != Enemy.BossType.None)
         {
             enemyGenerator.BossSetUp();
@@ -47,10 +49,12 @@ public class Battle : MonoBehaviour
     }
     void RoundClear()
     {
+        Debug.Log("RoundClear");
         RoundSetup();
     }
     void RoundSetup()
     {
+        Debug.Log("RoundSetup");
         round.ForwardRound();
         round.Setup();
         enemyGenerator.SetUp();
