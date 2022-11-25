@@ -18,6 +18,7 @@ public class FormidableEnemyParametor : MonoBehaviour
         audioSource = gameObject.GetComponent<AudioSource>();
         audioSource.PlayOneShot(formidableSE);
         m_navMeshAgent = GetComponent<NavMeshAgent>();
+        battle = GameObject.Find("Battle").GetComponent<Battle>();
     }
     void Update()
     {
