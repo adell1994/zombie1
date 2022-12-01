@@ -7794,6 +7794,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4288113310301424641, guid: 072761f1146b58c42b92da81bc5907b3, type: 3}
+      propertyPath: damage
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4288113310301424641, guid: 072761f1146b58c42b92da81bc5907b3, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 836274936}
+    - target: {fileID: 4288113310301424641, guid: 072761f1146b58c42b92da81bc5907b3, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4288113310301424641, guid: 072761f1146b58c42b92da81bc5907b3, type: 3}
+      propertyPath: enemyWepon
+      value: 
+      objectReference: {fileID: 643824717}
+    - target: {fileID: 4288113310301424641, guid: 072761f1146b58c42b92da81bc5907b3, type: 3}
+      propertyPath: shootDistance
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5863575704991993537, guid: 072761f1146b58c42b92da81bc5907b3, type: 3}
       propertyPath: m_TagString
       value: EnemyDog
@@ -8012,6 +8032,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4000013149834228, guid: 6857ff1d3761e21479727f3b27cc8f68, type: 3}
   m_PrefabInstance: {fileID: 630669528}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &643824717 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5863575704991993537, guid: 072761f1146b58c42b92da81bc5907b3, type: 3}
+  m_PrefabInstance: {fileID: 624000405}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &652369298
 PrefabInstance:
@@ -15212,7 +15237,7 @@ MonoBehaviour:
   - {fileID: 1366112830}
   - {fileID: 914444450}
   - {fileID: 56496410}
-  appearNextTime: 4
+  appearNextTime: 2
   zombie: {fileID: 1297506479720658371, guid: 58515800f33d3fa43ac0049c8534402f, type: 3}
   dog: {fileID: 5863575706530125163, guid: 072761f1146b58c42b92da81bc5907b3, type: 3}
   round: {fileID: 1358489970}

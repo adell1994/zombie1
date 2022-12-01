@@ -14,12 +14,13 @@ public class EnemyAI : MonoBehaviour
         AVOID,        //‰ñ”ð
     }
     public EnemyAiState aiState = EnemyAiState.WAIT;
+    public EnemyAiState nextState = EnemyAiState.WAIT;
     private bool isChasing;
     public bool isAiStateRunning;
     public bool enemyCanShoot;
     public bool wait;
-    public int distance;
-    public int shootDistance;
+    public float distance;
+    public float shootDistance;
     public int damage;
     public GameObject enemyWepon;
     public GameObject player;
@@ -46,6 +47,7 @@ public class EnemyAI : MonoBehaviour
             return;
         }
         InitAi();
+        aiState = nextState;
     }
     IEnumerator AiTimer()
     {
@@ -70,14 +72,14 @@ public class EnemyAI : MonoBehaviour
             wait = false;
             return;
         }
-        //distance = Vector3.Distance(gameObject.transform.position, player.transform.position);
+        distance = Vector3.Distance(gameObject.transform.position, player.transform.position);
         if (enemyCanShoot && isChasing && distance < shootDistance)
         {
-            aiState = EnemyAiState.MOVEANDATTACK;
+            nextState = EnemyAiState.MOVEANDATTACK;
         }
         else
         {
-            aiState = EnemyAiState.MOVE;
+            nextState = EnemyAiState.MOVE;
         }
         UpdateAI();
     }
