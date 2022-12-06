@@ -1,26 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Round : MonoBehaviour
 {
-    public int roundNum = 1;
+    public int roundNum = 0;
     public int enemyNum;
     public float roundBlock;
     public EnemyGenerator enemyGenerator;
     public AudioSource audioSource;
     public AudioClip roundProgresses;
+    public TextMeshProUGUI roundText;
 
     // Start is called before the first frame update
     void Start()
     {
-       // audioSource = gameObject.GetComponent<AudioSource>();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        roundText.text = roundNum + "R";
     }
     public void Setup()
     {

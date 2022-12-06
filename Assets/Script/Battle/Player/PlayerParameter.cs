@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class PlayerParameter : MonoBehaviour
 {
     public int playerHitPoint;
+    public int havePoints;
     public bool isDead;
     public GameObject gameOverText;
     public float timeInvincible = 1.5f;
@@ -17,6 +19,7 @@ public class PlayerParameter : MonoBehaviour
     public AudioClip takeDamageSE;
     public AudioClip damageSE;
     private AudioSource audioSource;
+    public TextMeshProUGUI havePointsText;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +29,7 @@ public class PlayerParameter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        havePointsText.text = havePoints + "P";
         if (playerHitPoint <= 0)
         {
             if (isDead == true)
