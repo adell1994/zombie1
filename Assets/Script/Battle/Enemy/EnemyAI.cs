@@ -114,7 +114,8 @@ public class EnemyAI : MonoBehaviour
     }
     void Move()
     {
-
+        Animator anim = GetComponent<Animator>();
+        anim.SetBool("Attack", false);
     }
     void Attack()
     {

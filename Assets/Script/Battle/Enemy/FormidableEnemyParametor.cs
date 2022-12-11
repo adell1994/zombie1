@@ -11,6 +11,7 @@ public class FormidableEnemyParametor : MonoBehaviour
     public AudioSource audioSource;
     NavMeshAgent m_navMeshAgent;
     Battle battle;
+    PlayerParameter playerParameter;
 
     // Update is called once per frame
     private void Start()
@@ -19,6 +20,7 @@ public class FormidableEnemyParametor : MonoBehaviour
         audioSource.PlayOneShot(formidableSE);
         m_navMeshAgent = GetComponent<NavMeshAgent>();
         battle = GameObject.Find("Battle").GetComponent<Battle>();
+        playerParameter = GameObject.Find("Player").GetComponent<PlayerParameter>();
     }
     void Update()
     {
@@ -41,6 +43,7 @@ public class FormidableEnemyParametor : MonoBehaviour
 
     public void Damage(int damage)
     {
+        playerParameter.havePoints += 20;
         hitPoint -= damage;
     }
     public void Erase()

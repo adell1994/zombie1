@@ -13,6 +13,7 @@ public class ZombieParameter : MonoBehaviour
     public AudioSource audioSource;
     NavMeshAgent m_navMeshAgent;
     Battle battle;
+    PlayerParameter playerParameter;
     // Update is called once per frame
     private void Start()
     {
@@ -20,6 +21,7 @@ public class ZombieParameter : MonoBehaviour
         audioSource.PlayOneShot(zombieSE);
         m_navMeshAgent = GetComponent<NavMeshAgent>();
         battle = GameObject.Find("Battle").GetComponent<Battle>();
+        playerParameter = GameObject.Find("Player").GetComponent<PlayerParameter>();
     }
     void Update()
     {
@@ -42,6 +44,7 @@ public class ZombieParameter : MonoBehaviour
 
     public void Damage(int damage)
     {
+        playerParameter.havePoints += 20;
         hitPoint -= damage;
     }
     public void Erase()
@@ -54,6 +57,7 @@ public class ZombieParameter : MonoBehaviour
         {
             return;
         }
+        playerParameter.havePoints += 50;
         head.SetActive(false);
         audioSource.PlayOneShot(headShotSE);
         m_navMeshAgent.speed = 0f;
@@ -62,6 +66,7 @@ public class ZombieParameter : MonoBehaviour
         isDead = true;
         battle.EnemyDead();
         Invoke("Erase", 3.0f);
+
     }
     public void GrenadeDeath()
     {
@@ -69,6 +74,7 @@ public class ZombieParameter : MonoBehaviour
         {
             return;
         }
+        playerParameter.havePoints += 30;
         m_navMeshAgent.speed = 0f;
         Animator anim = GetComponent<Animator>();
         anim.SetBool("Dead", true);
