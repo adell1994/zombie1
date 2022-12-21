@@ -19,6 +19,8 @@ public class Battle : MonoBehaviour
         End
     }
     public static  GrenadeState grenadeState = GrenadeState.Redy;
+
+
     public int remainingEnemyNum;
     public EnemyGenerator enemyGenerator;
     public Round round;

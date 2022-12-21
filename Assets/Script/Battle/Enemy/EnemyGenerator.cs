@@ -71,6 +71,8 @@ public class EnemyGenerator : MonoBehaviour
     {
         if(Enemy.bossType == Enemy.BossType.Boss1st)
         {
+            numberOfEnemys = 0;
+            elapsedTime = 5.0f;
             enemys_list.Clear();
             enemys_list.Add(dog);
         }
