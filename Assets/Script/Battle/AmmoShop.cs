@@ -9,9 +9,8 @@ public class AmmoShop: MonoBehaviour
     AudioSource audioSource;
     public GameObject shopText;
     PlayerParameter playerParameter;
-    private float timeReset = 2;
-    private float time = 0;
-
+    private bool startShopping = false;
+    private bool pushFlag = false;
     public enum AmmoShopState
     {
         Redy,
@@ -22,7 +21,6 @@ public class AmmoShop: MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        time = 0;
         audioSource = gameObject.GetComponent<AudioSource>();
         playerParameter = GameObject.Find("Player").GetComponent<PlayerParameter>();
         
@@ -31,27 +29,33 @@ public class AmmoShop: MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKey(KeyCode.E) && startShopping && playerParameter.havePoints >= 500)
+        {
+            if(pushFlag == false)
+            {
+                pushFlag = true;
+                audioSource.PlayOneShot(ammoRefillSE);
+                playerParameter.havePoints -= 500;
+                ammoShopState = AmmoShopState.Buy;
+            }
+        }
+        else
+        {
+            pushFlag = false;
+        }
     }
     private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.tag == "Player")
         {
             shopText.SetActive(true);
-            if (Input.GetKeyDown(KeyCode.E) && playerParameter.havePoints >= 500)
-            {
-                time += Time.deltaTime;
-                if (time > timeReset)
-                {
-                    audioSource.PlayOneShot(ammoRefillSE);
-                    playerParameter.havePoints -= 500;
-                    ammoShopState = AmmoShopState.Buy;
-                    time = 0;
-                }
-
-            }
+            startShopping = true;
         }
-        else
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
         {
             shopText.SetActive(false);
         }
