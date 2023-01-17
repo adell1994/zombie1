@@ -59,7 +59,7 @@ public class EnemyGenerator : MonoBehaviour
     public void SetUp()
     {
         numberOfEnemys = 0;
-        elapsedTime = 5.0f;
+        elapsedTime = 3.0f;
         enemys_list.Clear();
         enemys_list.Add(zombie); // ƒ]ƒ“ƒr				
         if (round.roundNum > 15)
@@ -72,7 +72,7 @@ public class EnemyGenerator : MonoBehaviour
         if(Enemy.bossType == Enemy.BossType.Boss1st)
         {
             numberOfEnemys = 0;
-            elapsedTime = 5.0f;
+            elapsedTime = 3.0f;
             enemys_list.Clear();
             enemys_list.Add(dog);
         }

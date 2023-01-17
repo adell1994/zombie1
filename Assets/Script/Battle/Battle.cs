@@ -43,7 +43,6 @@ public class Battle : MonoBehaviour
         if (remainingEnemyNum <= 0 && Enemy.bossType != Enemy.BossType.None)
         {
             round.ForwardRound();
-            round.Setup();
             enemyGenerator.BossSetUp();
             remainingEnemyNum = round.bossEnemyNum;
         }

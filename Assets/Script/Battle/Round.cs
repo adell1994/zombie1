@@ -7,7 +7,7 @@ public class Round : MonoBehaviour
 {
     public int roundNum = 0;
     public int enemyNum;
-    public int bossEnemyNum;
+    public int bossEnemyNum = 20;
     int roundCount = 0;
     public float roundBlock;
     public EnemyGenerator enemyGenerator;
@@ -38,12 +38,11 @@ public class Round : MonoBehaviour
         }
         //roundBlock = Mathf.Floor(roundNum / 15);
         Enemy.bossType = Enemy.BossType.None;					
-        if (num == 5) 
+        if (num == 4) 
         {
           //中ボス出現				
          Enemy.bossType = Enemy.BossType.Boss1st;
-         bossEnemyNum = 20;
-        } else if (num == 10)
+        } else if (num == 9)
         {
            //ボス出現				
           Enemy.bossType = Enemy.BossType.Boss2nd;
