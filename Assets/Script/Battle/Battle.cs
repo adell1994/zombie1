@@ -24,6 +24,7 @@ public class Battle : MonoBehaviour
     public int remainingEnemyNum;
     public EnemyGenerator enemyGenerator;
     public Round round;
+    public BGM bgm;
     // Start is called before the first frame update
     void Start()
     {
@@ -39,10 +40,11 @@ public class Battle : MonoBehaviour
     {
        // Debug.Log("EnemyDead");
         remainingEnemyNum -= 1;
-       // Debug.Log("remainingEnemyNum" + remainingEnemyNum);
+        Debug.Log("remainingEnemyNum" + remainingEnemyNum);
         if (remainingEnemyNum <= 0 && Enemy.bossType != Enemy.BossType.None)
         {
             round.ForwardRound();
+            bgm.SetUp();
             enemyGenerator.BossSetUp();
             remainingEnemyNum = round.bossEnemyNum;
         }
@@ -61,6 +63,7 @@ public class Battle : MonoBehaviour
         Debug.Log("RoundSetup");
         round.ForwardRound();
         round.Setup();
+        bgm.SetUp();
         enemyGenerator.SetUp();
         remainingEnemyNum = round.enemyNum;
     }

@@ -8,7 +8,6 @@ public class Round : MonoBehaviour
     public int roundNum = 0;
     public int enemyNum;
     public int bossEnemyNum = 20;
-    int roundCount = 0;
     public float roundBlock;
     public EnemyGenerator enemyGenerator;
     public AudioSource audioSource;
@@ -29,13 +28,7 @@ public class Round : MonoBehaviour
     public void Setup()
     {
         int num = roundNum % 10;
-        roundCount++;
         Debug.Log(num);
-        if(roundCount == 10)
-        {
-            num = 10;
-            roundCount = 0;
-        }
         //roundBlock = Mathf.Floor(roundNum / 15);
         Enemy.bossType = Enemy.BossType.None;					
         if (num == 4) 
