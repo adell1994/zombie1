@@ -41,14 +41,8 @@ public class Battle : MonoBehaviour
        // Debug.Log("EnemyDead");
         remainingEnemyNum -= 1;
         Debug.Log("remainingEnemyNum" + remainingEnemyNum);
-        if (remainingEnemyNum <= 0 && Enemy.bossType != Enemy.BossType.None)
-        {
-            round.ForwardRound();
-            bgm.SetUp();
-            enemyGenerator.BossSetUp();
-            remainingEnemyNum = round.bossEnemyNum;
-        }
-        else if (remainingEnemyNum <= 0)
+
+        if (remainingEnemyNum <= 0)
         {
             RoundClear();
         }
@@ -63,8 +57,18 @@ public class Battle : MonoBehaviour
         Debug.Log("RoundSetup");
         round.ForwardRound();
         round.Setup();
-        bgm.SetUp();
-        enemyGenerator.SetUp();
-        remainingEnemyNum = round.enemyNum;
+        if (remainingEnemyNum <= 0 && Enemy.bossType != Enemy.BossType.None)
+        {
+            bgm.SetUp();
+            enemyGenerator.BossSetUp();
+            remainingEnemyNum = round.bossEnemyNum;
+        }
+        else
+        {
+            bgm.SetUp();
+            enemyGenerator.SetUp();
+            remainingEnemyNum = round.enemyNum;
+        }
+
     }
 }

@@ -7,7 +7,8 @@ public class Round : MonoBehaviour
 {
     public int roundNum = 0;
     public int enemyNum;
-    public int bossEnemyNum = 20;
+    public int bossEnemyNum;
+    public int roundCount;
     public float roundBlock;
     public EnemyGenerator enemyGenerator;
     public AudioSource audioSource;
@@ -28,17 +29,26 @@ public class Round : MonoBehaviour
     public void Setup()
     {
         int num = roundNum % 10;
+        roundCount++;
+        if(roundCount == 10)
+        {
+            num = 10;
+            roundCount = 0;
+        }
         Debug.Log(num);
         //roundBlock = Mathf.Floor(roundNum / 15);
         Enemy.bossType = Enemy.BossType.None;					
-        if (num == 4) 
+        if (num == 5) 
         {
           //中ボス出現				
-         Enemy.bossType = Enemy.BossType.Boss1st;
-        } else if (num == 9)
+            Enemy.bossType = Enemy.BossType.Boss1st;
+            bossEnemyNum = 20;
+            enemyNum = bossEnemyNum;
+            return;
+        } else if (num == 10)
         {
            //ボス出現				
-          Enemy.bossType = Enemy.BossType.Boss2nd;
+           Enemy.bossType = Enemy.BossType.Boss2nd;
         }
 
         if (enemyNum >= 200)
