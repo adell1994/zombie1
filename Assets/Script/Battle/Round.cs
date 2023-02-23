@@ -10,6 +10,7 @@ public class Round : MonoBehaviour
     public int bossEnemyNum;
     public int roundCount;
     public float roundBlock;
+    public bool isBossEnemy;
     public EnemyGenerator enemyGenerator;
     public AudioSource audioSource;
     public AudioClip roundProgresses;
@@ -49,6 +50,15 @@ public class Round : MonoBehaviour
         {
            //ƒ{ƒXoŒ»				
            Enemy.bossType = Enemy.BossType.Boss2nd;
+            if(isBossEnemy == true)
+            {
+                bossEnemyNum = 100;
+                enemyNum = bossEnemyNum;
+                return;
+            }
+            bossEnemyNum = 1;
+            enemyNum = bossEnemyNum;
+            isBossEnemy = true;
         }
 
         if (enemyNum >= 200)

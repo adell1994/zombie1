@@ -2362,7 +2362,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 111292, guid: 332254905319da1469830bd3e8725b48, type: 3}
       propertyPath: m_Name
-      value: thc6
+      value: BossZombie
       objectReference: {fileID: 0}
     - target: {fileID: 111292, guid: 332254905319da1469830bd3e8725b48, type: 3}
       propertyPath: m_IsActive
@@ -2394,7 +2394,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 494698, guid: 332254905319da1469830bd3e8725b48, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 494698, guid: 332254905319da1469830bd3e8725b48, type: 3}
       propertyPath: m_LocalRotation.y
@@ -2402,7 +2402,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 494698, guid: 332254905319da1469830bd3e8725b48, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 494698, guid: 332254905319da1469830bd3e8725b48, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2491,6 +2491,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TargetObject: {fileID: 0}
   animator: {fileID: 180406814}
+  isBorn: 0
 --- !u!82 &180406817
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4566,6 +4567,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4000011765245650, guid: 9732a241b7bd0fa4a8e59553d6d8a2b0, type: 3}
   m_PrefabInstance: {fileID: 353624014}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &357676528
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 357676529}
+  m_Layer: 0
+  m_Name: BossPopPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &357676529
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 357676528}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 57.20796, y: -0.01, z: 0.21643986}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &364017043
 GameObject:
   m_ObjectHideFlags: 0
@@ -14943,6 +14975,7 @@ MonoBehaviour:
   enemyGenerator: {fileID: 1132146772}
   round: {fileID: 1358489970}
   bgm: {fileID: 1194078388}
+  bossController: {fileID: 180406816}
 --- !u!4 &1096425165
 Transform:
   m_ObjectHideFlags: 0
@@ -15677,11 +15710,14 @@ MonoBehaviour:
   - {fileID: 1366112830}
   - {fileID: 914444450}
   - {fileID: 56496410}
+  bossPopPoints: {fileID: 357676528}
   appearNextTime: 2
   zombie: {fileID: 4346318271203661026, guid: 68272bfaaec684c4d9c7eedb41902edb, type: 3}
   dog: {fileID: 5863575706530125163, guid: 072761f1146b58c42b92da81bc5907b3, type: 3}
+  bossZombie: {fileID: 180406812}
   round: {fileID: 1358489970}
   battle: {fileID: 1096425164}
+  bossController: {fileID: 180406816}
 --- !u!4 &1132146773
 Transform:
   m_ObjectHideFlags: 0
@@ -18483,6 +18519,7 @@ MonoBehaviour:
   bossEnemyNum: 0
   roundCount: 0
   roundBlock: 0
+  isBossEnemy: 0
   enemyGenerator: {fileID: 1132146772}
   audioSource: {fileID: 1358489972}
   roundProgresses: {fileID: 8300000, guid: 05229850c7d157b47a8d2914b659b707, type: 3}

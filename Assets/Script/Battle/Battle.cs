@@ -25,6 +25,7 @@ public class Battle : MonoBehaviour
     public EnemyGenerator enemyGenerator;
     public Round round;
     public BGM bgm;
+    public BossController bossController;
     // Start is called before the first frame update
     void Start()
     {
@@ -68,6 +69,7 @@ public class Battle : MonoBehaviour
             bgm.SetUp();
             enemyGenerator.SetUp();
             remainingEnemyNum = round.enemyNum;
+            bossController.isBorn = false;
         }
 
     }
