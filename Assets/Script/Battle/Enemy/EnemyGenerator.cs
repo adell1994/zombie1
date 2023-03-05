@@ -14,12 +14,12 @@ public class EnemyGenerator : MonoBehaviour
     private int numberOfEnemys;
     //　待ち時間計測フィールド
     private float elapsedTime;
+    public bool isBorn = false;
     public GameObject zombie;
     public GameObject dog;
     public GameObject bossZombie;
     public  Round round;
     public Battle battle;
-    public BossController bossController;
 
     // Start is called before the first frame update
     void Start()
@@ -50,13 +50,14 @@ public class EnemyGenerator : MonoBehaviour
     {
         if (Enemy.bossType == Enemy.BossType.Boss2nd)
         {
-            if (bossController.isBorn == false)
+            if (isBorn == false)
             {
                 //　敵の向きをランダムに決定
                 var RotationY = Random.value * 360f;
                 GameObject.Instantiate(bossZombie, bossPopPoints.transform.position, Quaternion.Euler(0f, RotationY, 0f));
                 numberOfEnemys++;
                 elapsedTime = 0f;
+                isBorn = true;
                 return;
             }
             //　出現させる敵をランダムに選ぶ
@@ -109,7 +110,8 @@ public class EnemyGenerator : MonoBehaviour
             numberOfEnemys = 0;
             elapsedTime = 3.0f;
             enemys_list.Clear();
-            if(round.isBossEnemy == true)
+            isBorn = false;
+            if (round.isBossEnemy == true)
             {
                 enemys_list.Add(zombie);
             }

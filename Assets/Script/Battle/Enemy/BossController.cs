@@ -8,7 +8,6 @@ public class BossController : MonoBehaviour
     public GameObject TargetObject; /// –Ú•WˆÊ’u
     NavMeshAgent m_navMeshAgent; /// NavMeshAgent
     public Animator animator;
-    public bool isBorn = false;
 
     // Use this for initialization
     void Start()
@@ -17,7 +16,6 @@ public class BossController : MonoBehaviour
         if (TargetObject == null)
         {
             TargetObject = GameObject.FindGameObjectWithTag("Player");
-            isBorn = true;
         }
     }
     // Update is called once per frame
