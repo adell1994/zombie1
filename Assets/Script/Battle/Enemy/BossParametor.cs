@@ -46,6 +46,11 @@ public class BossParametor : MonoBehaviour
         playerParameter.havePoints += 20;
         hitPoint -= damage;
     }
+    public void WeakPointDamage(int damage)
+    {
+        playerParameter.havePoints += 50;
+        hitPoint -= damage;
+    }
     public void Erase()
     {
         Destroy(gameObject);

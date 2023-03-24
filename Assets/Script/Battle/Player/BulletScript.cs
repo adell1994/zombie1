@@ -15,6 +15,7 @@ public class BulletScript : MonoBehaviour {
 	[Tooltip("Put Weapon layer and Player layer to ignore bullet raycast.")]
 	public LayerMask ignoreLayer;
 	public int damage;
+	public int weakPointDamage;
 	AudioSource audioSource;
 	private void Start()
     {
@@ -62,7 +63,20 @@ public class BulletScript : MonoBehaviour {
 					enemy.HeadShot();
 					Destroy(gameObject);
 				}
-
+				if (hit.transform.tag == "BossEnemy")
+				{
+					Instantiate(bloodEffect, hit.point, Quaternion.LookRotation(hit.normal));
+					BossParametor enemy = hit.collider.GetComponent<BossEnemyPart>().bossParametor;
+					enemy.Damage(damage);
+					Destroy(gameObject);
+				}
+				if (hit.transform.name == "BossHeadMesh")
+				{
+					Instantiate(bloodEffect, hit.point, Quaternion.LookRotation(hit.normal));
+					BossParametor enemy = hit.collider.GetComponent<BossEnemyPart>().bossParametor;
+					enemy.WeakPointDamage(weakPointDamage);
+					Destroy(gameObject);
+				}
 			//}		
 			Destroy(gameObject);
 		}
