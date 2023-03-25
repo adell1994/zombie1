@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.AI;
 public class BossEnemyAI : MonoBehaviour
 {
     public enum BossEnemyAiState
@@ -23,8 +23,10 @@ public class BossEnemyAI : MonoBehaviour
     public float shootDistance;
     public float attackDistance;
     public int damage;
+    private int number;
     public GameObject enemyWepon;
     public GameObject player;
+    NavMeshAgent m_navMeshAgent;
 
     void Start()
     {
@@ -85,7 +87,18 @@ public class BossEnemyAI : MonoBehaviour
         distance = Vector3.Distance(gameObject.transform.position, player.transform.position);
         if (enemyCanShoot && isChasing && distance < attackDistance)
         {
-            nextState = BossEnemyAiState.ATTACK;
+            // ‚P‚©‚ç‚P‚O‚O‚Ü‚Å‚Ì’†‚©‚çƒ‰ƒ“ƒ_ƒ€‚É”Žš‚ð‘I‘ð‚·‚éB
+            number = Random.Range(1, 100);
+            // ‘I‘ð‚µ‚½”Žš‚ª‚Q‚OˆÈ‰º‚È‚ç‚ÎATTACK‚ÉˆÚs‚·‚éB
+            if (number <= 30)
+            {
+                nextState = BossEnemyAiState.ATTACK;
+            }
+            else
+            {
+                nextState = BossEnemyAiState.MOVE;
+            }
+
         }
         else
         {
@@ -129,8 +142,11 @@ public class BossEnemyAI : MonoBehaviour
     }
     void Attack()
     {
+        m_navMeshAgent.speed = 0f;
         Animator anim = GetComponent<Animator>();
         anim.SetBool("Attack", true);
+        m_navMeshAgent.speed = 10.0f;
+        Invoke("CoolTime", 1.0f);
         if (enemyWepon.transform.tag == "Player")
         {
             PlayerParameter player = gameObject.GetComponent<PlayerParameter>();
@@ -140,7 +156,7 @@ public class BossEnemyAI : MonoBehaviour
     void MoveAndAttack()
     {
         Animator anim = GetComponent<Animator>();
-        anim.SetBool("Attack", true);
+        anim.SetBool("MoveAttack", true);
         if (enemyWepon.transform.tag == "Player")
         {
             PlayerParameter player = gameObject.GetComponent<PlayerParameter>();
@@ -154,5 +170,14 @@ public class BossEnemyAI : MonoBehaviour
     void Avoid()
     {
 
+    }
+    public void CoolTime()
+    {
+        m_navMeshAgent.speed = 0f;
+        Invoke("Action", 2.0f);
+    }
+    public void Action()
+    {
+        m_navMeshAgent.speed = 3.5f;
     }
 }
