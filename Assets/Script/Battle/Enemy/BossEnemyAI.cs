@@ -32,6 +32,7 @@ public class BossEnemyAI : MonoBehaviour
     {
         SetAi();
         player = GameObject.FindGameObjectWithTag("Player");
+        m_navMeshAgent = GetComponent<NavMeshAgent>();
         isChasing = true;
         enemyCanShoot = true;
         StartCoroutine("AiTimer");

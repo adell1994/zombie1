@@ -1,18 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ThrowGrenadeScript : MonoBehaviour
 {
  
     public float thrust = 20f;
     public GameObject grenade;
+    public GameObject grenade1;
+    public GameObject grenade2;
+    AudioSource audioSource;
+    public AudioClip grenadeChargeSE;
     Rigidbody rb_grenade;
     public int throwGrenade = 2;
+    public Round round;
     bool isThrow;
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = gameObject.GetComponent<AudioSource>();
         rb_grenade = GetComponent<Rigidbody>();
     }
 
@@ -38,8 +45,31 @@ public class ThrowGrenadeScript : MonoBehaviour
 
             bom.GetComponent<Rigidbody>().angularVelocity = Vector3.forward * 7;	// ŽèžÖ’e‚ð‰ñ“]‘¬“x‚ð‘ã“ü.
             isThrow = true;
-            throwGrenade--;
+            throwGrenade --;
             StartCoroutine("ThrowInterval");
+        }
+
+        if(round.roundNum == 6)
+        {
+            audioSource.PlayOneShot(grenadeChargeSE);
+            throwGrenade = 2;
+        }
+
+        if (throwGrenade < 2)
+        {
+            if(throwGrenade == 1)
+            {
+                grenade1.SetActive(false);
+            }
+            else if(throwGrenade == 0)
+            {
+                grenade2.SetActive(false);
+            }
+        }
+        else
+        {
+            grenade1.SetActive(true);
+            grenade2.SetActive(true);
         }
 
     }

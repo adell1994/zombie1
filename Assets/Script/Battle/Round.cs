@@ -19,7 +19,7 @@ public class Round : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -50,6 +50,7 @@ public class Round : MonoBehaviour
         {
            //ボス出現				
            Enemy.bossType = Enemy.BossType.Boss2nd;
+            // 一度ボス戦が終わっていたら敵の数を追加する
             if(isBossEnemy == true)
             {
                 bossEnemyNum = 100;
