@@ -7,7 +7,7 @@ public class BossParametor : MonoBehaviour
 {
     public int hitPoint = 1500;
     public bool isDead = false;
-    public AudioClip bossSE;
+    public AudioClip damageSE;
     public AudioSource audioSource;
     NavMeshAgent m_navMeshAgent;
     Battle battle;
@@ -17,7 +17,6 @@ public class BossParametor : MonoBehaviour
     private void Start()
     {
         audioSource = gameObject.GetComponent<AudioSource>();
-        audioSource.PlayOneShot(bossSE);
         m_navMeshAgent = GetComponent<NavMeshAgent>();
         battle = GameObject.Find("Battle").GetComponent<Battle>();
         playerParameter = GameObject.Find("Player").GetComponent<PlayerParameter>();
@@ -49,6 +48,7 @@ public class BossParametor : MonoBehaviour
     public void WeakPointDamage(int damage)
     {
         playerParameter.havePoints += 50;
+        audioSource.PlayOneShot(damageSE);
         hitPoint -= damage;
     }
     public void Erase()

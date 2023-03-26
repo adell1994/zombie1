@@ -70,6 +70,13 @@ public class BulletScript : MonoBehaviour {
 					enemy.Damage(damage);
 					Destroy(gameObject);
 				}
+				if (hit.transform.tag == "BossWepon")
+				{
+					Instantiate(bloodEffect, hit.point, Quaternion.LookRotation(hit.normal));
+					BossParametor enemy = hit.collider.GetComponent<BossEnemyPart>().bossParametor;
+					enemy.Damage(damage);
+					Destroy(gameObject);
+				}
 				if (hit.transform.name == "BossHeadMesh")
 				{
 					Instantiate(bloodEffect, hit.point, Quaternion.LookRotation(hit.normal));

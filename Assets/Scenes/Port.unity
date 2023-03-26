@@ -1165,9 +1165,10 @@ GameObject:
   - component: {fileID: 78289844}
   - component: {fileID: 78289846}
   - component: {fileID: 78289845}
+  - component: {fileID: 78289847}
   m_Layer: 0
   m_Name: Forearm.LMesh
-  m_TagString: BossEnemy
+  m_TagString: BossWepon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1214,6 +1215,18 @@ CapsuleCollider:
   m_Height: 0.3
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &78289847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 78289843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 484ed46b7f2d95e4bad39090256e731d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &96080320
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2486,7 +2499,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 111292, guid: 332254905319da1469830bd3e8725b48, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 111292, guid: 332254905319da1469830bd3e8725b48, type: 3}
       propertyPath: m_TagString
@@ -2593,7 +2606,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 4
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -2629,8 +2642,10 @@ MonoBehaviour:
   wait: 0
   distance: 0
   shootDistance: 2
-  attackDistance: 10
+  attackDistance: 5
   damage: 25
+  bossSE: {fileID: 8300000, guid: 6adbb55ab93f944538913b840eafc414, type: 3}
+  audioSource: {fileID: 0}
   enemyWepon: {fileID: 180406812}
   player: {fileID: 836274936}
 --- !u!114 &180406816
@@ -2659,7 +2674,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.679
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2755,9 +2770,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae68bee2c1b8b884da1a3bea5cc10b0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitPoint: 1500
+  hitPoint: 5000
   isDead: 0
-  bossSE: {fileID: 0}
+  damageSE: {fileID: 8300000, guid: 2a295373a10441545bcaf619b61bea94, type: 3}
   audioSource: {fileID: 0}
 --- !u!1001 &194914863
 PrefabInstance:
@@ -6068,9 +6083,10 @@ GameObject:
   - component: {fileID: 429858607}
   - component: {fileID: 429858609}
   - component: {fileID: 429858608}
+  - component: {fileID: 429858610}
   m_Layer: 0
   m_Name: Forearm.RMesh
-  m_TagString: BossEnemy
+  m_TagString: BossWepon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6117,6 +6133,18 @@ CapsuleCollider:
   m_Height: 0.3
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &429858610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 429858606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 484ed46b7f2d95e4bad39090256e731d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &438922782 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4000012589328442, guid: 231f567299ef5844f8dca0461bf7a80b, type: 3}
@@ -13925,7 +13953,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -500, y: -130}
+  m_AnchoredPosition: {x: -500, y: -450}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &957388617
@@ -14927,9 +14955,10 @@ GameObject:
   - component: {fileID: 1059647648}
   - component: {fileID: 1059647649}
   - component: {fileID: 1059647650}
+  - component: {fileID: 1059647651}
   m_Layer: 0
   m_Name: bot_hand.RMesh
-  m_TagString: EnemyWepon
+  m_TagString: BossWepon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14975,6 +15004,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 484ed46b7f2d95e4bad39090256e731d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1059647651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1059647647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 563cd3e83fe47b045a2bcadfbd9131c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bossParametor: {fileID: 180406818}
 --- !u!1001 &1062801694
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20123,9 +20165,10 @@ GameObject:
   - component: {fileID: 1429899242}
   - component: {fileID: 1429899243}
   - component: {fileID: 1429899244}
+  - component: {fileID: 1429899245}
   m_Layer: 0
   m_Name: bot_hand.LMesh
-  m_TagString: EnemyWepon
+  m_TagString: BossWepon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -20171,6 +20214,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 484ed46b7f2d95e4bad39090256e731d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1429899245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1429899241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 563cd3e83fe47b045a2bcadfbd9131c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bossParametor: {fileID: 180406818}
 --- !u!1 &1440388532
 GameObject:
   m_ObjectHideFlags: 0
@@ -27768,7 +27824,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -640, y: -130}
+  m_AnchoredPosition: {x: -640, y: -450}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1929652998

@@ -15,6 +15,7 @@ TagManager:
   - Grenade
   - EnemyDog
   - BossEnemy
+  - BossWepon
   layers:
   - Default
   - TransparentFX

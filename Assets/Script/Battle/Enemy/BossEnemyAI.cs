@@ -8,14 +8,17 @@ public class BossEnemyAI : MonoBehaviour
     {
         WAIT,            //çsìÆÇàÍíUí‚é~
         MOVE,            //à⁄ìÆ
-        ATTACK,        //í‚é~ÇµÇƒçUåÇ
-        MOVEANDATTACK,    //à⁄ìÆÇµÇ»Ç™ÇÁçUåÇ
+        JUMPATTACK,      //ÉWÉÉÉìÉvÇµÇƒçUåÇ
+        ATTACK,          //çUåÇ
         IDLE,            //ë“ã@
-        AVOID,        //âÒî
+        AVOID,           //âÒî
     }
     public BossEnemyAiState aiState = BossEnemyAiState.WAIT;
     public BossEnemyAiState nextState = BossEnemyAiState.WAIT;
     private bool isChasing;
+    private bool isAttack;
+    private bool isLottery;
+    private bool isScream;
     public bool isAiStateRunning;
     public bool enemyCanShoot;
     public bool wait;
@@ -24,6 +27,8 @@ public class BossEnemyAI : MonoBehaviour
     public float attackDistance;
     public int damage;
     private int number;
+    public AudioClip bossSE;
+    public AudioSource audioSource;
     public GameObject enemyWepon;
     public GameObject player;
     NavMeshAgent m_navMeshAgent;
@@ -73,38 +78,44 @@ public class BossEnemyAI : MonoBehaviour
         if (wait)
         {
             aiState = BossEnemyAiState.WAIT;
+
             wait = false;
             return;
         }
         distance = Vector3.Distance(gameObject.transform.position, player.transform.position);
-        if (enemyCanShoot && isChasing && distance < shootDistance)
+        if (enemyCanShoot && isChasing && (distance < attackDistance) && (distance < shootDistance))
         {
-            nextState = BossEnemyAiState.MOVEANDATTACK;
+            nextState = BossEnemyAiState.ATTACK;
         }
         else
         {
-            nextState = BossEnemyAiState.MOVE;
-        }
-        distance = Vector3.Distance(gameObject.transform.position, player.transform.position);
-        if (enemyCanShoot && isChasing && distance < attackDistance)
-        {
-            // ÇPÇ©ÇÁÇPÇOÇOÇ‹Ç≈ÇÃíÜÇ©ÇÁÉâÉìÉ_ÉÄÇ…êîéöÇëIëÇ∑ÇÈÅB
-            number = Random.Range(1, 100);
-            // ëIëÇµÇΩêîéöÇ™ÇQÇOà»â∫Ç»ÇÁÇŒATTACKÇ…à⁄çsÇ∑ÇÈÅB
-            if (number <= 30)
+            if(enemyCanShoot && isChasing && distance < attackDistance)
             {
-                nextState = BossEnemyAiState.ATTACK;
-            }
-            else
-            {
-                nextState = BossEnemyAiState.MOVE;
+                if (isLottery == true)
+                {
+                    return;
+                }
+                // ÇPÇ©ÇÁÇPÇOÇOÇ‹Ç≈ÇÃíÜÇ©ÇÁÉâÉìÉ_ÉÄÇ…êîéöÇëIëÇ∑ÇÈÅB
+                number = Random.Range(1, 100);
+                isLottery = true;
+                // ëIëÇµÇΩêîéöÇ™50à»â∫Ç»ÇÁÇŒATTACKÇ…à⁄çsÇ∑ÇÈÅB
+                if (number <= 50)
+                {
+                    nextState = BossEnemyAiState.JUMPATTACK;
+                }
+                else
+                {
+                    nextState = BossEnemyAiState.MOVE;
+                }
             }
 
-        }
-        else
-        {
-            nextState = BossEnemyAiState.MOVE;
-        }
+        }   
+
+
+        
+
+
+
         UpdateAI();
     }
     void UpdateAI()
@@ -118,11 +129,11 @@ public class BossEnemyAI : MonoBehaviour
             case BossEnemyAiState.MOVE:
                 Move();
                 break;
+            case BossEnemyAiState.JUMPATTACK:
+                JumpAttack();
+                break;
             case BossEnemyAiState.ATTACK:
                 Attack();
-                break;
-            case BossEnemyAiState.MOVEANDATTACK:
-                MoveAndAttack();
                 break;
             case BossEnemyAiState.IDLE:
                 Idle();
@@ -134,30 +145,46 @@ public class BossEnemyAI : MonoBehaviour
     }
     void Wait()
     {
+        audioSource = gameObject.GetComponent<AudioSource>();
+        Animator anim = GetComponent<Animator>();
+        m_navMeshAgent.speed = 0f;
+        if(isScream == true)
+        {
+            return;
+        }
+        audioSource.PlayOneShot(bossSE);
+        anim.SetBool("Scream", true);
+        isScream = true;
+        Invoke("Action", 2.0f);
 
     }
     void Move()
     {
-        Animator anim = GetComponent<Animator>();
-        anim.SetBool("Attack", false);
+
     }
-    void Attack()
+    void JumpAttack()
     {
-        m_navMeshAgent.speed = 0f;
-        Animator anim = GetComponent<Animator>();
-        anim.SetBool("Attack", true);
-        m_navMeshAgent.speed = 10.0f;
-        Invoke("CoolTime", 1.0f);
         if (enemyWepon.transform.tag == "Player")
         {
             PlayerParameter player = gameObject.GetComponent<PlayerParameter>();
             player.TakeDamage(damage);
         }
+        if (isAttack == true)
+        {
+            return;
+        }
+        m_navMeshAgent.speed = 0f;
+        Animator anim = GetComponent<Animator>();
+        anim.SetBool("Jump", true);
+        m_navMeshAgent.speed = 10.0f;
+        Invoke("CoolTime", 1.0f);
+        isAttack = true;
     }
-    void MoveAndAttack()
+    void Attack()
     {
         Animator anim = GetComponent<Animator>();
-        anim.SetBool("MoveAttack", true);
+        anim.SetBool("Attack", true);
+        CoolTime();
         if (enemyWepon.transform.tag == "Player")
         {
             PlayerParameter player = gameObject.GetComponent<PlayerParameter>();
@@ -175,10 +202,17 @@ public class BossEnemyAI : MonoBehaviour
     public void CoolTime()
     {
         m_navMeshAgent.speed = 0f;
-        Invoke("Action", 2.0f);
+        Invoke("Action", 3.0f);
     }
     public void Action()
     {
-        m_navMeshAgent.speed = 3.5f;
+        Animator anim = GetComponent<Animator>();
+        m_navMeshAgent.speed = 4.0f;
+        isLottery = false;
+        anim.SetBool("Attack", false);
+        anim.SetBool("Jump", false);
+        anim.SetBool("Scream", false);
+        isAttack = false;
+        nextState = BossEnemyAiState.MOVE;
     }
 }
