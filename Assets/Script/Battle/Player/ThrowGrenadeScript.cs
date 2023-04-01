@@ -12,6 +12,7 @@ public class ThrowGrenadeScript : MonoBehaviour
     public GameObject grenade2;
     AudioSource audioSource;
     public AudioClip grenadeChargeSE;
+    bool isCharge;
     Rigidbody rb_grenade;
     public int throwGrenade = 2;
     public Round round;
@@ -49,10 +50,18 @@ public class ThrowGrenadeScript : MonoBehaviour
             StartCoroutine("ThrowInterval");
         }
 
-        if(round.roundNum == 6)
+        if(round.num == 6)
         {
-            audioSource.PlayOneShot(grenadeChargeSE);
-            throwGrenade = 2;
+            if(isCharge == false)
+            {
+                audioSource.PlayOneShot(grenadeChargeSE);
+                throwGrenade = 2;
+                isCharge = true;
+            }
+        }
+        else
+        {
+            isCharge = false;
         }
 
         if (throwGrenade < 2)

@@ -1263,6 +1263,18 @@ PrefabInstance:
       propertyPath: currentGun
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 11414154, guid: c391f12a928274acab8576bb6030641d, type: 3}
+      propertyPath: gunsIHave.Array.data[0]
+      value: NewGun_auto
+      objectReference: {fileID: 0}
+    - target: {fileID: 11414154, guid: c391f12a928274acab8576bb6030641d, type: 3}
+      propertyPath: gunsIHave.Array.data[1]
+      value: NewGun_semi
+      objectReference: {fileID: 0}
+    - target: {fileID: 11478776, guid: c391f12a928274acab8576bb6030641d, type: 3}
+      propertyPath: mouseSensitvity
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 13695512, guid: c391f12a928274acab8576bb6030641d, type: 3}
       propertyPath: m_IsTrigger
       value: 0
@@ -7828,6 +7840,10 @@ PrefabInstance:
     - target: {fileID: 5863575704991993537, guid: 072761f1146b58c42b92da81bc5907b3, type: 3}
       propertyPath: m_TagString
       value: EnemyDog
+      objectReference: {fileID: 0}
+    - target: {fileID: 5863575706530125161, guid: 072761f1146b58c42b92da81bc5907b3, type: 3}
+      propertyPath: m_Speed
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 5863575706530125163, guid: 072761f1146b58c42b92da81bc5907b3, type: 3}
       propertyPath: m_Name
@@ -18345,10 +18361,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 489ae83358965ed47abbd793cc170e72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roundNum: 4
+  roundNum: 0
   enemyNum: 0
   bossEnemyNum: 0
-  roundCount: 4
+  roundCount: 0
   num: 0
   roundBlock: 0
   isBossEnemy: 1
