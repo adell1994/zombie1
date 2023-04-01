@@ -24,10 +24,10 @@ MonoBehaviour:
     unlock_condition_type: 1
     unlock_condition_value: 10
     thumbnail: Select/SelectStageBottun2
-    stage_scene: 
+    stage_scene: Scene/Village
   - id: 3
     name: Stage3
     unlock_condition_type: 1
     unlock_condition_value: 10
     thumbnail: 
-    stage_scene: 
+    stage_scene: Scene/Stage3

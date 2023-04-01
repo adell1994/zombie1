@@ -14,4 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Port.unity
     guid: 5a463281e6e238742a45430f11e82829
+  - enabled: 1
+    path: Assets/Scenes/Village.unity
+    guid: eb70a523a04b5e4418b1f2c5f4b7225e
+  - enabled: 1
+    path: Assets/Scenes/Stage3.unity
+    guid: 60c03fe49e4bdc74eaf0b32f7d31a76a
   m_configObjects: {}
