@@ -56,19 +56,22 @@ public class EnemyGenerator : MonoBehaviour
                 var RotationY = Random.value * 360f;
                 GameObject.Instantiate(bossZombie, bossPopPoints.transform.position, Quaternion.Euler(0f, RotationY, 0f));
                 numberOfEnemys++;
-                SetUp();
                 elapsedTime = 0f;
                 isBorn = true;
                 return;
             }
-            //　出現させる敵をランダムに選ぶ
-            var randomValue = Random.Range(0, enemys_list.Count);
-            //　出現させる場所をランダムに選ぶ
-            var randomPoint = Random.Range(0, popPoints.Length);
-            //　敵の向きをランダムに決定
-            var randomRotationY = Random.value * 360f;
+            else
+            {
+                SetUp();
+                //　出現させる敵をランダムに選ぶ
+                var randomValue = Random.Range(0, enemys_list.Count);
+                //　出現させる場所をランダムに選ぶ
+                var randomPoint = Random.Range(0, popPoints.Length);
+                //　敵の向きをランダムに決定
+                var randomRotationY = Random.value * 360f;
 
-            GameObject.Instantiate(enemys_list[randomValue], popPoints[randomPoint].transform.position, Quaternion.Euler(0f, randomRotationY, 0f));
+                GameObject.Instantiate(enemys_list[randomValue], popPoints[randomPoint].transform.position, Quaternion.Euler(0f, randomRotationY, 0f));
+            }
         }
         else
         {

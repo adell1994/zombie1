@@ -18367,7 +18367,7 @@ MonoBehaviour:
   roundCount: 0
   num: 0
   roundBlock: 0
-  isBossEnemy: 1
+  isBossEnemy: 0
   enemyGenerator: {fileID: 1132146772}
   audioSource: {fileID: 1358489972}
   roundProgresses: {fileID: 8300000, guid: 05229850c7d157b47a8d2914b659b707, type: 3}
