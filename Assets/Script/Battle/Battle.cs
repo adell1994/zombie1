@@ -62,6 +62,7 @@ public class Battle : MonoBehaviour
             bgm.SetUp();
             enemyGenerator.BossSetUp();
             remainingEnemyNum = round.bossEnemyNum;
+            Debug.Log("setup");
         }
         else
         {

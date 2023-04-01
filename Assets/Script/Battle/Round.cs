@@ -9,6 +9,7 @@ public class Round : MonoBehaviour
     public int enemyNum;
     public int bossEnemyNum;
     public int roundCount;
+    public int num;
     public float roundBlock;
     public bool isBossEnemy;
     public EnemyGenerator enemyGenerator;
@@ -29,7 +30,7 @@ public class Round : MonoBehaviour
     }
     public void Setup()
     {
-        int num = roundNum % 10;
+        num = roundNum % 10;
         roundCount++;
         if(roundCount == 10)
         {
@@ -60,6 +61,7 @@ public class Round : MonoBehaviour
             bossEnemyNum = 1;
             enemyNum = bossEnemyNum;
             isBossEnemy = true;
+            return;
         }
 
         if (enemyNum >= 200)

@@ -22,14 +22,14 @@ public class BGM : MonoBehaviour
     }
     public void SetUp()
     {
-        if ((round.roundNum == 5) || (round.roundNum == 10))
+        if ((round.num == 5) || (round.num == 10))
         {
-            if (round.roundNum == 5)
+            if (round.num == 5)
             {
                 audioSource.clip = clips[1];
                 audioSource.Play();
             }
-            if (round.roundNum == 10)
+            if (round.num == 10)
             {
                 audioSource.clip = clips[2];
                 audioSource.Play();

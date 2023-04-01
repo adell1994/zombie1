@@ -56,6 +56,7 @@ public class EnemyGenerator : MonoBehaviour
                 var RotationY = Random.value * 360f;
                 GameObject.Instantiate(bossZombie, bossPopPoints.transform.position, Quaternion.Euler(0f, RotationY, 0f));
                 numberOfEnemys++;
+                SetUp();
                 elapsedTime = 0f;
                 isBorn = true;
                 return;
