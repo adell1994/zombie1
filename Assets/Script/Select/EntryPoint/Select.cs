@@ -38,6 +38,7 @@ public class Select : MonoBehaviour
         }
         listTransform.localPosition = new Vector3((-count * (CONTENT_WIDTH + CONTENT_SPACE) + CONTENT_SPACE) / 2  + CONTENT_WIDTH / 2, 0);
         audioSource = gameObject.GetComponent<AudioSource>();
+        isButtonPush = false;
     }
 
     // Update is called once per frame
@@ -47,7 +48,8 @@ public class Select : MonoBehaviour
     }
     public void ChengeScene(int id)
     {
-        if(id == 1)
+        int clearStage = PlayerPrefs.GetInt("Clear", 0);
+        if (id == 1)
         {
             if (isButtonPush == true)
             {
@@ -57,7 +59,7 @@ public class Select : MonoBehaviour
             audioSource.PlayOneShot(selectSE);
             SceneManager.LoadScene("Port");
         }
-        if (id == 2)
+        if (id == 2 && clearStage >= 1)
         {
             if (isButtonPush == true)
             {
@@ -67,7 +69,7 @@ public class Select : MonoBehaviour
             audioSource.PlayOneShot(selectSE);
             SceneManager.LoadScene("Village");
         }
-        if (id == 3)
+        if (id == 3 && clearStage >= 2)
         {
             if (isButtonPush == true)
             {

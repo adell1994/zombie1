@@ -20,6 +20,7 @@ public class PlayerParameter : MonoBehaviour
     public AudioClip damageSE;
     private AudioSource audioSource;
     public TextMeshProUGUI havePointsText;
+    public GameOver gameOver;
     // Start is called before the first frame update
     void Start()
     {
@@ -37,8 +38,8 @@ public class PlayerParameter : MonoBehaviour
                 return;
             }
             isDead = true;
-            Battle.state = Battle.BattleState.End; 
-            gameOverText.SetActive(true);
+            Battle.state = Battle.BattleState.End;
+            gameOver.SetGameOver();
         }
         if (isInvincible == true)
         {

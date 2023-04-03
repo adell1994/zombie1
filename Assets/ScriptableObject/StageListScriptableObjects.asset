@@ -20,13 +20,13 @@ MonoBehaviour:
     thumbnail: Select/SelectStageBottun
     stage_scene: Scene/Port
   - id: 2
-    name: Village
+    name: Coming Soon!!
     unlock_condition_type: 1
     unlock_condition_value: 10
     thumbnail: Select/SelectStageBottun2
     stage_scene: Scene/Village
   - id: 3
-    name: Stage3
+    name: Coming Soon!!
     unlock_condition_type: 1
     unlock_condition_value: 10
     thumbnail: 
