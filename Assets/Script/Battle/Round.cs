@@ -12,6 +12,7 @@ public class Round : MonoBehaviour
     public int num;
     public float roundBlock;
     public bool isBossEnemy;
+    public RoundUpdate roundUpdate;
     public EnemyGenerator enemyGenerator;
     public AudioSource audioSource;
     public AudioClip roundProgresses;
@@ -76,6 +77,8 @@ public class Round : MonoBehaviour
      public void ForwardRound()
      {
         audioSource.PlayOneShot(roundProgresses, 1.0f);
+        roundUpdate.RoundUp();
         roundNum++;
      }
+
 }

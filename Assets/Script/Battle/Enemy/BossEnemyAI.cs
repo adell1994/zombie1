@@ -95,11 +95,9 @@ public class BossEnemyAI : MonoBehaviour
                 {
                     return;
                 }
-                // １から１００までの中からランダムに数字を選択する。
-                number = Random.Range(1, 100);
+                number = Random.Range(1, 100);                // １から１００までの中からランダムに数字を選択する。
                 isLottery = true;
-                // 選択した数字が50以下ならばATTACKに移行する。
-                if (number <= 50)
+                if (number <= 50)                            // 選択した数字が50以下ならばATTACKに移行する。
                 {
                     nextState = BossEnemyAiState.JUMPATTACK;
                 }
