@@ -5,15 +5,15 @@ using UnityEngine;
 
 public class PlayerParameter : MonoBehaviour
 {
-    public int playerHitPoint;
-    public int havePoints;
-    public bool isDead;
+    public int playerHitPoint;　　　　　　//PlayerのHP
+    public int havePoints;               //現在の所持ポイント
+    public bool isDead;　　　　　　　　 //Playerが死んでいるかどうか　　
     public GameObject gameOverText;
-    public float timeInvincible = 1.5f;
-    public float timeHpRecovery = 15.0f;
-    bool isInvincible;
-    bool isHpRecovery;
-    bool isDamageSE;
+    public float timeInvincible = 1.5f;　 //無敵時間
+    public float timeHpRecovery = 15.0f;　//HPが完全回復する時間
+    bool isInvincible;　　　　　　　　　　//無敵状態になっているか
+    bool isHpRecovery;　　　　　　　　　　//HP回復準備状態になっているか
+    bool isDamageSE;　　　　　　　　　　　//ダメージ時SE再生状態になっているか
     float invincibleTimer;
     float hpRecoveryTimer;
     public AudioClip takeDamageSE;
@@ -31,7 +31,7 @@ public class PlayerParameter : MonoBehaviour
     void Update()
     {
         havePointsText.text = havePoints + "P";
-        if (playerHitPoint <= 0)
+        if (playerHitPoint <= 0) 　　//HPが0になったらゲームオーバー
         {
             if (isDead == true)
             {
@@ -41,7 +41,7 @@ public class PlayerParameter : MonoBehaviour
             Battle.state = Battle.BattleState.End;
             gameOver.SetGameOver();
         }
-        if (isInvincible == true)
+        if (isInvincible == true)　　//無敵状態でタイマーが0になったら無敵状態解除
         {
             invincibleTimer -= Time.deltaTime;
             if (invincibleTimer < 0)
@@ -49,7 +49,7 @@ public class PlayerParameter : MonoBehaviour
                 isInvincible = false;
             }
         }
-        if (isHpRecovery == true)
+        if (isHpRecovery == true)　　//HP回復準備状態でタイマーが0になったらHPを回復してSE再生を止める
         {
             hpRecoveryTimer -= Time.deltaTime;
             if (hpRecoveryTimer < 0)

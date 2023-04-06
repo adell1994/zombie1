@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyDogPart : MonoBehaviour
 {
-    public FormidableEnemyParametor formidableEnemyparametor;
+    public EnemyDogParametor enemyDogParametor;
     // Start is called before the first frame update
     void Start()
     {

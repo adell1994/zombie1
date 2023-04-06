@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-public class FormidableEnemyController : MonoBehaviour
+public class EnemyDogController : MonoBehaviour
 {
     public GameObject TargetObject; /// –Ú•WˆÊ’u
     NavMeshAgent m_navMeshAgent; /// NavMeshAgent

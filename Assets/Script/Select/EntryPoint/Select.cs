@@ -59,7 +59,7 @@ public class Select : MonoBehaviour
             audioSource.PlayOneShot(selectSE);
             SceneManager.LoadScene("Port");
         }
-        if (id == 2 && clearStage >= 1)
+        if (id == 2 && clearStage >= 2)
         {
             if (isButtonPush == true)
             {

@@ -52,8 +52,8 @@ public class BulletScript : MonoBehaviour {
 				if (hit.transform.tag == "EnemyDog")
 				{
 					Instantiate(bloodEffect, hit.point, Quaternion.LookRotation(hit.normal));
-					FormidableEnemyParametor enemy = hit.collider.GetComponent<EnemyDogPart>().formidableEnemyparametor;
-					enemy.Damage(damage);
+				    EnemyDogParametor enemy = hit.collider.GetComponent<EnemyDogPart>().enemyDogParametor;
+				    enemy.Damage(damage);
 					Destroy(gameObject);
 				}
 				if (hit.transform.name == "HeadMesh")

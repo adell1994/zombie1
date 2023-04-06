@@ -5,14 +5,14 @@ using UnityEngine;
 public class Battle : MonoBehaviour
 {
 
-    public enum BattleState
+    public enum BattleState　　　//戦闘状態か
     {
         Redy,
         Battle,
         End
     }
     public static  BattleState state = BattleState.Battle;
-    public enum GrenadeState
+    public enum GrenadeState　　　//グレネードを投げたか
     {
         Redy,
         Throw,
@@ -21,7 +21,7 @@ public class Battle : MonoBehaviour
     public static  GrenadeState grenadeState = GrenadeState.Redy;
 
 
-    public int remainingEnemyNum;
+    public int remainingEnemyNum;　　　//倒さなくてはいけない敵の数
     public EnemyGenerator enemyGenerator;
     public Round round;
     public BGM bgm;
@@ -57,7 +57,7 @@ public class Battle : MonoBehaviour
         Debug.Log("RoundSetup");
         round.ForwardRound();
         round.Setup();
-        if (remainingEnemyNum <= 0 && Enemy.bossType != Enemy.BossType.None)
+        if (remainingEnemyNum <= 0 && Enemy.bossType != Enemy.BossType.None)　　　//敵を殲滅してラウンドのボスタイプが無し以外だったら
         {
             bgm.SetUp();
             enemyGenerator.BossSetUp();

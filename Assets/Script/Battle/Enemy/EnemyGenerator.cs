@@ -4,17 +4,13 @@ using UnityEngine;
 
 public class EnemyGenerator : MonoBehaviour
 {
-    //　出現させる敵を入れておく
-    private List<GameObject> enemys_list = new List<GameObject>();
-    [SerializeField] GameObject[] popPoints;
-    public GameObject bossPopPoints;
-    //　次に敵が出現するまでの時間
-    [SerializeField] float appearNextTime;
-    //　今何人の敵を出現させたか（総数）
-    private int numberOfEnemys;
-    //　待ち時間計測フィールド
-    private float elapsedTime;
-    public bool isBorn = false;
+    private List<GameObject> enemys_list = new List<GameObject>();    //　出現させる敵を入れておく
+    [SerializeField] GameObject[] popPoints;　　　　　　　　　　　　　//　敵の出現場所
+    public GameObject bossPopPoints;　　　　　　　　　　　　　　　　　//  ボスの出現場所
+    [SerializeField] float appearNextTime;   　　　　　　　　　　　　 //　次に敵が出現するまでの時間
+    private int numberOfEnemys;    　　　　　　　　　　　　　　　　　//　今何人の敵を出現させたか（総数）
+    private float elapsedTime;    　　　　　　　　　　　　　　　　　　//　待ち時間計測フィールド
+    public bool isBorn = false;　　　　　　　　　　　　　　　　　　　//　ボスが出現したか
     public GameObject zombie;
     public GameObject dog;
     public GameObject bossZombie;
@@ -52,7 +48,6 @@ public class EnemyGenerator : MonoBehaviour
         {
             if (isBorn == false)
             {
-                //　敵の向きをランダムに決定
                 var RotationY = Random.value * 360f;
                 GameObject.Instantiate(bossZombie, bossPopPoints.transform.position, Quaternion.Euler(0f, RotationY, 0f));
                 numberOfEnemys++;

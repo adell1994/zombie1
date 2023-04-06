@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class FormidableEnemyParametor : MonoBehaviour
+public class EnemyDogParametor : MonoBehaviour
 {
     public int hitPoint = 50;
     public bool isDead = false;
-    public AudioClip formidableSE;
+    public AudioClip dogSE;
     public AudioSource audioSource;
     NavMeshAgent m_navMeshAgent;
     Battle battle;
@@ -17,7 +17,7 @@ public class FormidableEnemyParametor : MonoBehaviour
     private void Start()
     {
         audioSource = gameObject.GetComponent<AudioSource>();
-        audioSource.PlayOneShot(formidableSE);
+        audioSource.PlayOneShot(dogSE);
         m_navMeshAgent = GetComponent<NavMeshAgent>();
         battle = GameObject.Find("Battle").GetComponent<Battle>();
         playerParameter = GameObject.Find("Player").GetComponent<PlayerParameter>();

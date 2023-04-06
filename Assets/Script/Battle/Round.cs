@@ -5,13 +5,12 @@ using UnityEngine;
 
 public class Round : MonoBehaviour
 {
-    public int roundNum = 0;
-    public int enemyNum;
-    public int bossEnemyNum;
+    public int roundNum = 0;　　　　//ラウンド数
+    public int enemyNum;　　　　　　//出現する敵の数　　
+    public int bossEnemyNum;　　　　//出現するボス敵の数
     public int roundCount;
     public int num;
-    public float roundBlock;
-    public bool isBossEnemy;
+    public bool isBossEnemy;　　　　//ボスラウンドに突入したことがあるか
     public RoundUpdate roundUpdate;
     public EnemyGenerator enemyGenerator;
     public AudioSource audioSource;
@@ -52,8 +51,7 @@ public class Round : MonoBehaviour
         {
            //ボス出現				
            Enemy.bossType = Enemy.BossType.Boss2nd;
-            // 一度ボス戦が終わっていたら敵の数を追加する
-            if(isBossEnemy == true)
+            if(isBossEnemy == true)            // 一度ボス戦が終わっていたら敵の数を追加する
             {
                 bossEnemyNum = 100;
                 enemyNum = bossEnemyNum;

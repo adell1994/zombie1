@@ -14,7 +14,7 @@ public class ThrowGrenadeScript : MonoBehaviour
     public AudioClip grenadeChargeSE;
     bool isCharge;
     Rigidbody rb_grenade;
-    public int throwGrenade = 2;
+    public int throwGrenade = 2;　　　　　　//グレネード所持数
     public Round round;
     bool isThrow;
     // Start is called before the first frame update
@@ -50,7 +50,7 @@ public class ThrowGrenadeScript : MonoBehaviour
             StartCoroutine("ThrowInterval");
         }
 
-        if(round.num == 6)
+        if(round.num == 6)　//ラウンド数が6毎にグレネードの数を回復する
         {
             if(isCharge == false)
             {
