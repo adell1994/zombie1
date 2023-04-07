@@ -40,8 +40,22 @@ public class GunScript : MonoBehaviour {
 	 */
     void Start()
     {
-		float bullets = PlayerPrefs.GetFloat("Bullets", 320);
-		bulletsIHave = bullets;
+		GunInventory gunInventory = GameObject.FindGameObjectWithTag("Player").GetComponent<GunInventory>();
+        if (gunInventory.currentGun.name.Contains("auto"))
+        {
+			float bullets_auto = PlayerPrefs.GetFloat("Bullets_auto", 320);
+			float bulletsIn_auto = PlayerPrefs.GetFloat("bulletsInTheGun_auto", 80);
+			bulletsIHave = bullets_auto;
+			bulletsInTheGun = bulletsIn_auto;
+		}else
+		if (gunInventory.currentGun.name.Contains("semi"))
+        {
+			float bullets_semi = PlayerPrefs.GetFloat("Bullets_semi", 250);
+			float bulletsIn_semi = PlayerPrefs.GetFloat("bulletsInTheGun_semi", 25);
+			bulletsIHave = bullets_semi;
+			bulletsInTheGun = bulletsIn_semi;
+		}
+
 	}
 
     void Awake(){

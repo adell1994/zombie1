@@ -148,7 +148,20 @@ public class GunInventory : MonoBehaviour {
 				currentHAndsAnimator.SetBool("changingWeapon", true);
 
 				yield return new WaitForSeconds(0.8f);//0.8 time to change waepon, but since there is no change weapon animation there is no need to wait fo weapon taken down
-				PlayerPrefs.SetFloat("Bullets", currentGun.GetComponent<GunScript>().bulletsIHave);
+				if(currentGun.name.Contains("auto"))
+                {
+					PlayerPrefs.SetFloat("bulletsInTheGun_auto", currentGun.GetComponent<GunScript>().bulletsInTheGun);
+					PlayerPrefs.SetFloat("Bullets_auto", currentGun.GetComponent<GunScript>().bulletsIHave);
+					PlayerPrefs.Save();
+				}
+				if (currentGun.name.Contains("semi"))
+                {
+					PlayerPrefs.SetFloat("bulletsInTheGun_semi", currentGun.GetComponent<GunScript>().bulletsInTheGun);
+					PlayerPrefs.SetFloat("Bullets_semi", currentGun.GetComponent<GunScript>().bulletsIHave);
+					PlayerPrefs.Save();
+					Debug.Log("Saved");
+				}
+
 				PlayerPrefs.Save();
 				Destroy(currentGun);
 

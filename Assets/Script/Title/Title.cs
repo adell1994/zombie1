@@ -15,6 +15,10 @@ public class Title : MonoBehaviour
     void Start()
     {
         audioSource = gameObject.GetComponent<AudioSource>();
+        PlayerPrefs.DeleteKey("Bullets_auto");
+        PlayerPrefs.DeleteKey("bulletsInTheGun_auto");
+        PlayerPrefs.DeleteKey("Bullets_semi");
+        PlayerPrefs.DeleteKey("bulletsInTheGun_semi");
     }
 
     // Update is called once per frame
